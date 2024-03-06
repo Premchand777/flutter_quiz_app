@@ -14,19 +14,19 @@ class QuizJunction extends StatefulWidget {
 }
 
 class _QuizJunctionState extends State<QuizJunction> {
-  Widget? activeScreen;
+  String activeScreen = 'quiz-start-screen';
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = 'questions-screen';
     });
   }
 
-  @override
-  void initState() {
-    activeScreen = QuizStartScreen(switchScreen);
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   activeScreen = QuizStartScreen(switchScreen);
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,9 @@ class _QuizJunctionState extends State<QuizJunction> {
                   ]
               ),
             ),
-            child: activeScreen,
+            child: activeScreen == 'quiz-start-screen'
+                ? QuizStartScreen(switchScreen)
+                : const QuestionsScreen(),
           ),
       ),
     );
