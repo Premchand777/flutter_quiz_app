@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // start screen stateless custom widget
 class QuizStartScreen extends StatelessWidget {
-  const QuizStartScreen(this.switchScreen, {super.key});
+  const QuizStartScreen(this.switchScreen, { super.key });
 
   final void Function() switchScreen;
 

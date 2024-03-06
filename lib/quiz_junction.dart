@@ -44,7 +44,7 @@ class _QuizJunctionState extends State<QuizJunction> {
               ),
             ),
             child: activeScreen,
-          )
+          ),
       ),
     );
   }
