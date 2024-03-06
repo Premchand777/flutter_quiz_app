@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 
 // start screen stateless custom widget
-class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+class QuizStartScreen extends StatelessWidget {
+  const QuizStartScreen(this.switchScreen, {super.key});
+
+  final void Function() switchScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class StartScreen extends StatelessWidget {
             height: 20,
           ),
           ElevatedButton.icon(
-            onPressed: () {},
+            onPressed: switchScreen,
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.indigo,
               shadowColor: Colors.indigoAccent,
