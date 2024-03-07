@@ -14,11 +14,11 @@ class QuizJunction extends StatefulWidget {
 }
 
 class _QuizJunctionState extends State<QuizJunction> {
-  String activeScreen = 'quiz-start-screen';
+  String activeScreen = 'quizStart';
 
   void switchScreen() {
     setState(() {
-      activeScreen = 'questions-screen';
+      activeScreen = 'questions';
     });
   }
 
@@ -30,6 +30,11 @@ class _QuizJunctionState extends State<QuizJunction> {
 
   @override
   Widget build(BuildContext context) {
+    Widget currentScreen = QuizStartScreen(switchScreen);
+    if (activeScreen == 'questions') {
+      currentScreen = const QuestionsScreen();
+    }
+
     return MaterialApp(
       title: 'quiz_app',
       home: Scaffold(
@@ -43,9 +48,7 @@ class _QuizJunctionState extends State<QuizJunction> {
                   ]
               ),
             ),
-            child: activeScreen == 'quiz-start-screen'
-                ? QuizStartScreen(switchScreen)
-                : const QuestionsScreen(),
+            child: currentScreen,
           ),
       ),
     );
