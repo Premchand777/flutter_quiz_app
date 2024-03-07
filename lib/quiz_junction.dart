@@ -16,9 +16,9 @@ class QuizJunction extends StatefulWidget {
 class _QuizJunctionState extends State<QuizJunction> {
   String activeScreen = 'quizStart';
 
-  void switchScreen() {
+  void switchScreen(String? changeScreen) {
     setState(() {
-      activeScreen = 'questions';
+      activeScreen = changeScreen?.isNotEmpty == true ?'quizStart' : 'questions';
     });
   }
 
@@ -31,8 +31,9 @@ class _QuizJunctionState extends State<QuizJunction> {
   @override
   Widget build(BuildContext context) {
     Widget currentScreen = QuizStartScreen(switchScreen);
+
     if (activeScreen == 'questions') {
-      currentScreen = const QuestionsScreen();
+      currentScreen = QuestionsScreen(restartQuizOnEnd: switchScreen);
     }
 
     return MaterialApp(
@@ -43,8 +44,8 @@ class _QuizJunctionState extends State<QuizJunction> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                   colors: [
-                    Colors.indigo.shade700,
-                    Colors.indigo.shade900
+                    Colors.indigo,
+                    Colors.indigo.shade700
                   ]
               ),
             ),
