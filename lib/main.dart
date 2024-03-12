@@ -2,11 +2,13 @@
 import 'package:flutter/material.dart';
 
 // import project pkgs
-import 'package:quiz_app/quiz_junction.dart';
+import 'package:flutter_quiz/quiz_junction.dart';
 
 // automatically called by dart
 void main() {
   runApp(
-    const QuizJunction(),
+    const SafeArea(
+      child: QuizJunction(),
+    ),
   );
 }

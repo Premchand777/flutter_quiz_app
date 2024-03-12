@@ -1,5 +1,5 @@
 // import project pkgs
-import 'package:quiz_app/models/quiz_model.dart';
+import 'package:flutter_quiz/models/quiz_model.dart';
 
 const questionsAnswers = [
   QuizModel(

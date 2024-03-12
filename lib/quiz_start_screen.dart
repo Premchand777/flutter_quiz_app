@@ -1,15 +1,21 @@
-
 // import flutter pkgs
 import 'package:flutter/material.dart';
 
 // import 3rd party pkgs
 import 'package:google_fonts/google_fonts.dart';
 
+// import project pkgs
+import 'package:flutter_quiz/reusable_widgets/icon_text_action_button.dart';
+
 // start screen stateless custom widget
 class QuizStartScreen extends StatelessWidget {
-  const QuizStartScreen(this.switchScreen, { super.key });
+  const QuizStartScreen({super.key, required this.changeScreen});
 
-  final void Function(String? changeScreen) switchScreen;
+  final void Function(
+    String screenName,
+    int? correctAnswers,
+    List<Map<String, dynamic>>? resultSummary,
+  ) changeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -31,30 +37,19 @@ class QuizStartScreen extends StatelessWidget {
               fontWeight: FontWeight.normal,
               color: Colors.white,
               fontSize: 18,
+              letterSpacing: 1,
+              wordSpacing: 1,
             ),
           ),
           const SizedBox(
             height: 20,
           ),
-          ElevatedButton.icon(
-            onPressed: () {
-              switchScreen(null);
+          IconTextActionButton(
+            icon: Icons.arrow_right_alt,
+            text: 'Start Quiz',
+            initStartRestart: () {
+              changeScreen('questions', null, null);
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.indigo.shade900,
-              shadowColor: Colors.indigoAccent,
-            ),
-            icon: const Icon(
-              Icons.arrow_right_alt,
-              color: Colors.white,
-            ),
-            label: Text(
-              'Start Quiz',
-              style: GoogleFonts.rubik(
-                fontWeight: FontWeight.bold,
-                color: Colors.white
-              ),
-            ),
           ),
         ],
       ),
