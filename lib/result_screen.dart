@@ -1,16 +1,10 @@
-// import flutter pkgs
 import 'package:flutter/material.dart';
-
-// import 3rd party pkgs
-
-// import project pkgs
 import 'package:flutter_quiz/reusable_widgets/icon_text_action_button.dart';
 
-// result screen stateless widget
-class ResultScreen extends StatefulWidget {
+class ResultScreen extends StatelessWidget {
   const ResultScreen({
     super.key,
-    this.rightAnswers,
+    required this.rightAnswers,
     required this.resultSummary,
     required this.changeScreen,
   });
@@ -24,18 +18,13 @@ class ResultScreen extends StatefulWidget {
   ) changeScreen;
 
   @override
-  State<ResultScreen> createState() => _ResultScreenState();
-}
-
-class _ResultScreenState extends State<ResultScreen> {
-  @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'You have answered ${widget.rightAnswers} out of ${widget.resultSummary.length} questions correctly!',
+            'You have answered $rightAnswers out of ${resultSummary.length} questions correctly!',
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -53,7 +42,7 @@ class _ResultScreenState extends State<ResultScreen> {
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                children: widget.resultSummary.map((result) {
+                children: resultSummary.map((result) {
                   return Row(
                     children: [
                       Expanded(
@@ -154,7 +143,7 @@ class _ResultScreenState extends State<ResultScreen> {
             icon: Icons.restart_alt_rounded,
             text: 'Restart Quiz',
             initStartRestart: () {
-              widget.changeScreen(
+              changeScreen(
                 'quizStart',
                 null,
                 null,
